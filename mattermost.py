@@ -54,6 +54,7 @@ def parse():
 def encode_special_characters(text):
     text = text.replace("%", "%25")
     text = text.replace("&", "%26")
+    text = text.replace(";", "%3B")
     return text
 
 
@@ -98,6 +99,8 @@ def payload(args):
 
 
 def request(url, data):
+    # print(url)
+    # print(data)
     req = urllib2.Request(url, data)
     response = urllib2.urlopen(req)
     return response.read()
